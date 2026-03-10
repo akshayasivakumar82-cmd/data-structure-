@@ -1,0 +1,4 @@
+class Solution:
+    def findUnion(self, a, b):
+        s = set(a) | set(b)   # Union of both arrays
+        return list(s)
