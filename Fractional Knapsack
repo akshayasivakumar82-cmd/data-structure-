@@ -1,0 +1,21 @@
+class Solution:
+    def fractionalKnapsack(self, val, wt, capacity):
+        n = len(val)
+        # Compute value per weight and store with index
+        items = [(val[i]/wt[i], val[i], wt[i]) for i in range(n)]
+        
+        # Sort items by value per weight in decreasing order
+        items.sort(reverse=True)
+        
+        total_value = 0.0
+        for ratio, v, w in items:
+            if capacity >= w:
+                total_value += v
+                capacity -= w
+            else:
+                # Take fraction of item
+                total_value += v * (capacity / w)
+                break
+        
+        # Round to 6 decimal places
+        return round(total_value, 6)
