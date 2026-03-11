@@ -1,0 +1,39 @@
+class Solution:
+    def countFreq(self, arr, target):
+        n = len(arr)
+        
+        # Helper to find first occurrence
+        def first():
+            low, high = 0, n-1
+            ans = -1
+            while low <= high:
+                mid = (low + high) // 2
+                if arr[mid] == target:
+                    ans = mid
+                    high = mid - 1  # move left
+                elif arr[mid] < target:
+                    low = mid + 1
+                else:
+                    high = mid - 1
+            return ans
+        
+        # Helper to find last occurrence
+        def last():
+            low, high = 0, n-1
+            ans = -1
+            while low <= high:
+                mid = (low + high) // 2
+                if arr[mid] == target:
+                    ans = mid
+                    low = mid + 1  # move right
+                elif arr[mid] < target:
+                    low = mid + 1
+                else:
+                    high = mid - 1
+            return ans
+        
+        f = first()
+        if f == -1:
+            return 0  # target not found
+        l = last()
+        return l - f + 1
