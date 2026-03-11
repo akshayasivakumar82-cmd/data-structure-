@@ -1,0 +1,9 @@
+class Solution:
+    def checkEqual(self, arr1, arr2):
+        if len(arr1) != len(arr2):
+            return False
+        
+        arr1.sort()
+        arr2.sort()
+        
+        return arr1 == arr2
