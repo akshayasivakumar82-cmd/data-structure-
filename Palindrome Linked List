@@ -1,0 +1,13 @@
+class Solution:
+    def isPalindrome(self, head):
+        # Convert linked list to a list
+        arr = []
+        curr = head
+        while curr:
+            arr.append(curr.data)
+            curr = curr.next
+        
+        # Check if the list is a palindrome
+        return arr == arr[::-1]
+        
+        
