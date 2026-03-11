@@ -1,0 +1,15 @@
+class Solution:
+    def dfs(self, adj):
+        V = len(adj)
+        visited = [False] * V
+        res = []
+
+        def dfs_util(v):
+            visited[v] = True
+            res.append(v)
+            for u in adj[v]:
+                if not visited[u]:
+                    dfs_util(u)
+
+        dfs_util(0)
+        return res
