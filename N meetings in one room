@@ -1,0 +1,18 @@
+class Solution:
+    def maximumMeetings(self, start, end):
+        n = len(start)
+        # Pair each meeting with (end time, original index, start time)
+        meetings = [(end[i], i, start[i]) for i in range(n)]
+        
+        # Sort by end time, and by original index for tie-breaks
+        meetings.sort()
+        
+        count = 0
+        last_end = -1  # start before any meeting
+        
+        for e, _, s in meetings:
+            if s > last_end:  # strictly no overlap
+                count += 1
+                last_end = e
+        
+        return count
